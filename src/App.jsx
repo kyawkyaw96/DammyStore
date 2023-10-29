@@ -24,20 +24,14 @@ const App = () => {
     const data = await FetchSliderData("laptops");
     dispatch(addSliderData(data));
   };
-  // fetch categories?
-  const getCategories = async () => {
-    const data = await FetchCategories("categories");
-    // dispatch(addAllData(data));
-    console.log(data);
-  };
+
   useEffect(() => {
     getProducts();
-    getCategories();
     getSliderData();
   }, []);
 
   return (
-    <div className=' bg-primary w-full overflow-hidden mx-auto '>
+    <div className=' bg-primary w-full overflow-hidden mx-auto m-0 p-0 '>
       <Nav />
       <Header />
       <div className=' w-full p-2 lg:p-0 lg:container mx-auto'>

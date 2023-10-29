@@ -3,15 +3,16 @@ import { useSelector } from "react-redux";
 import CustomSlider from "./CustomSlider";
 import Card from "./Card";
 import Drawer from "./Drawer";
+import SelectedProduct from "./SelectedProduct";
 
 const Home = () => {
   const product = useSelector((state) => state.products.getProducts.products);
   return (
-    <section className=''>
+    <div className=' '>
       <CustomSlider />
-      <Drawer />
+      <SelectedProduct />
       <Card product={product} />
-    </section>
+    </div>
   );
 };
 

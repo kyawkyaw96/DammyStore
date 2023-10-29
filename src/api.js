@@ -1,14 +1,25 @@
 import axios from "axios";
 const BASE_URL = "https://dummyjson.com";
+const userToken = {
+  method: "GET" /* or POST/PUT/PATCH/DELETE */,
+  headers: {
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvYXV0cXVpYXV0LnBuZz9zaXplPTUweDUwJnNldD1zZXQxIiwiaWF0IjoxNjM1NzczOTYyLCJleHAiOjE2MzU3Nzc1NjJ9.n9PQX8w8ocKo0dMCw3g8bKhjB8Wo7f7IONFBDqfxKhs",
+    "Content-Type": "application/json",
+  },
+};
 export const FetchData = async (url) => {
-  const { data } = await axios.get(`${BASE_URL}/${url}`);
+  const { data } = await axios.get(`${BASE_URL}/${url}`, userToken);
   return data;
 };
 export const FetchSliderData = async (url) => {
-  const { data } = await axios.get(`${BASE_URL}/products/category/${url}`);
+  const { data } = await axios.get(
+    `${BASE_URL}/products/category/${url}?limit=8`,
+    userToken
+  );
   return data;
 };
 export const FetchCategories = async (url) => {
-  const { data } = await axios.get(`${BASE_URL}/products/${url}`);
+  const { data } = await axios.get(`${BASE_URL}/products/${url}`, userToken);
   return data;
 };

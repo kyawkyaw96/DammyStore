@@ -3,10 +3,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useSelector } from "react-redux";
+import Drawer from "./Drawer";
+import SelectionNav from "./SelectionNav";
 
 const CustomSlider = () => {
   const products = useSelector((state) => state.products.sliderData.products);
-
+  // console.log(products);
   let settings = {
     dots: true,
     autoplaySpeed: 3000,
@@ -18,7 +20,7 @@ const CustomSlider = () => {
     slidesToScroll: 1,
   };
   return (
-    <div className=' w-screen flex flex-col mx-auto my-4 mb-11'>
+    <div className=' w-screen gap-6 flex flex-col mx-auto my-4 mb-11'>
       <Slider {...settings}>
         {products?.map((product) => (
           <div className=' ' key={product?.id}>
@@ -33,6 +35,7 @@ const CustomSlider = () => {
           </div>
         ))}
       </Slider>
+      <SelectionNav />
     </div>
   );
 };

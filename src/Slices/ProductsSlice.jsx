@@ -6,6 +6,7 @@ export const ProductsSlice = createSlice({
     getProducts: [],
     cartProducts: [],
     sliderData: [],
+    selectData: [],
   },
   reducers: {
     addAllData: (state, action) => {
@@ -37,8 +38,16 @@ export const ProductsSlice = createSlice({
         };
       }
     },
+    addSelectData: (state, action) => {
+      return { ...state, selectData: action.payload };
+    },
   },
 });
-export const { addAllData, addCartData, addSliderData, removeFromCart } =
-  ProductsSlice.actions;
+export const {
+  addAllData,
+  addCartData,
+  addSliderData,
+  removeFromCart,
+  addSelectData,
+} = ProductsSlice.actions;
 export default ProductsSlice.reducer;

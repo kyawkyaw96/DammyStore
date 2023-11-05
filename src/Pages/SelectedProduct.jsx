@@ -7,12 +7,12 @@ const SelectedProduct = () => {
   const { products } = useSelector((state) => state.products.selectData);
 
   return (
-    <div className=' flex flex-wrap '>
+    <div className=' flex flex-nowrap overflow-auto scroll-smooth gap-2 my-3'>
       {" "}
       {products?.map((product) => (
         <div
           key={product?.id}
-          className=' w-44 lg:w-[275px]  h-[320px] lg:h-[420px] relative  bg-white border border-gray-200 rounded-lg shadow '
+          className=' min-w-[176px] lg:min-w-[275px]  h-[320px] lg:h-[420px] relative  bg-white border border-gray-200 rounded-lg shadow '
         >
           <a href='#'>
             <img
@@ -39,8 +39,8 @@ const SelectedProduct = () => {
               </h5>
             </a>
             {/* rating and star */}
-            <div className='absolute bottom-5 '>
-              <div className='flex items-center mt-2.5 mb-2 lg:mb-5'>
+            <div className='absolute bottom-5 ms-[-10px] lg:ms-0'>
+              <div className='flex items-center mt-2.5 mb-2 lg:mb-5 ps-2 lg:ps-0 '>
                 <svg
                   className='lg:w-4 lg:h-4 w-2 h-2 text-yellow-300 mr-1'
                   aria-hidden='true'
@@ -92,7 +92,7 @@ const SelectedProduct = () => {
               </div>
               {/* rating and star */}
 
-              <div className='  text-lg lg:text-2xl font-bold text-gray-500 '>
+              <div className='  text-lg lg:text-2xl font-bold text-gray-500 ps-2 lg:ps-0 '>
                 {product?.price}$
               </div>
 

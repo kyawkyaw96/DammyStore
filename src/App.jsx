@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { FetchCategories, FetchData, FetchSliderData } from "./api";
 import { useDispatch } from "react-redux";
 import { addAllData, addSliderData } from "./Slices/ProductsSlice";
@@ -40,8 +40,8 @@ const App = () => {
           <Route path='/about' element={<About />} />
           <Route path='/detail/:id' element={<Detail />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/footer' element={<Footer />} />
         </Routes>
-        <Footer />
       </div>
     </div>
   );

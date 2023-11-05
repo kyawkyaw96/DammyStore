@@ -8,10 +8,20 @@ const Drawer = () => {
   const [toggle, setToggle] = useState(true);
 
   //fetch categories
+
   const [category, setCategory] = useState();
+  const [error, setError] = useState("");
   const getCategories = async () => {
-    const data = await FetchCategories("categories");
-    setCategory(data);
+    try {
+      const data = await FetchCategories("categories");
+      setCategory(data);
+      if (data.length > 1) {
+        setError("");
+      }
+    } catch (e) {
+      // console.log(e.message);
+      setError(e.message);
+    }
   };
   useEffect(() => {
     getCategories();
@@ -24,8 +34,12 @@ const Drawer = () => {
     dispatch(addSelectData(data));
   };
   useEffect(() => {
+    //delete error message with timer
+    const timer = setTimeout(() => {
+      setError("");
+    }, 1000);
     getSelectData();
-  }, [selectPd]);
+  }, [selectPd, error]);
   const select = (category) => {
     setSelectPd(category), setToggle(!toggle);
   };
@@ -33,7 +47,7 @@ const Drawer = () => {
   return (
     <>
       {/* drawer init and toggle */}
-      <div className=''>
+      <div className=' relative min-w-[130px]'>
         <button
           className='text-white bg-cyan-700 hover:bg-stone-400 focus:ring-4 ring-2 ring-blue-200 focus:ring-blue-300 lg:font-medium rounded-lg text-md px-2 lg:px-5 py-0.5 lg:py-2.5 text-center  
            focus:outline-none 
@@ -42,10 +56,14 @@ const Drawer = () => {
           onClick={() => setToggle(!toggle)}
         >
           <span className='flex-1 flex gap-2 items-center whitespace-nowrap'>
-            Products
             <AiOutlineMenu className=' text-lg' />
           </span>
         </button>
+        {error && (
+          <h1 className=' text-sm absolute min-w-10 mt-5 text-red-500 font-bold'>
+            Too many request please wait !
+          </h1>
+        )}
       </div>
       {/* drawer component */}
       <div

@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 const Card = ({ product }) => {
   return (
     <>
-      <div className=' text-center px-4 bg-secondary border-l-8 border-l-red-500 py-4 w-full'>
-        <h1 className='  text-white font-bold'>Happy Shopping</h1>
+      <div className=' flex justify-center items-center px-4 bg-secondary border-l-8 border-l-red-500 h-16 w-full'>
+        <h1 className='  text-white font-bold text-2xl'>Happy Shopping</h1>
       </div>
-      <div className='flex flex-wrap overflow-hidden gap-1 w-screen items-center justify-center'>
+      <div className='flex flex-wrap overflow-hidden gap-1 lg:gap-5 my-4 w-full items-center justify-center'>
         {" "}
         {product?.map((product) => (
           <div
             key={product?.id}
-            className=' w-44 lg:w-[275px] h-[320px] lg:h-[420px] relative  bg-white border border-gray-200 rounded-lg shadow '
+            className=' w-44 lg:w-[275px] h-[320px] lg:h-[420px] relative shadow-md bg-white border border-gray-200 rounded-lg  '
           >
             <a href='#'>
               <img
@@ -39,8 +39,8 @@ const Card = ({ product }) => {
                 </h5>
               </a>
               {/* rating and star */}
-              <div className='absolute bottom-5 '>
-                <div className='flex items-center mt-2.5 mb-2 lg:mb-5'>
+              <div className='absolute bottom-5 ml-[-10px] lg:m-0'>
+                <div className='flex items-center mt-2.5 mb-2 lg:mb-5 ps-2 lg:ps-0'>
                   <svg
                     className='lg:w-4 lg:h-4 w-2 h-2 text-yellow-300 mr-1'
                     aria-hidden='true'
@@ -92,17 +92,17 @@ const Card = ({ product }) => {
                 </div>
                 {/* rating and star */}
 
-                <div className='  text-lg lg:text-2xl font-bold text-gray-500 '>
+                <div className='  text-lg lg:text-2xl font-bold text-gray-500 ps-2 lg:ps-0'>
                   {product?.price}$
                 </div>
 
-                <div className='flex lg:flex-row mt-2 gap-2  lg:gap-6 justify-between items-center lg:justify-between '>
+                <div className='flex lg:flex-row mt-2 gap-2   lg:gap-6 justify-between items-center lg:justify-between '>
                   <Link
                     to={`/cart/${product?.id}`}
                     href='#'
                     className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  lg:font-medium rounded-lg text-xs px-2 lg:px-3 py-0.5 lg:py-2.5 text-center '
                   >
-                    Add to cart
+                    AddToCart
                   </Link>
                   <Link
                     to={`detail/${product?.id}`}

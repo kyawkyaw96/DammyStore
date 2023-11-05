@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { BsCartDashFill } from "react-icons/bs";
 import { ImLocation } from "react-icons/im";
@@ -6,11 +6,13 @@ import { FcBusinessman } from "react-icons/fc";
 import { LuLogIn } from "react-icons/lu";
 
 const Nav = () => {
+  const [search, setSearch] = useState("");
+  console.log(search);
   return (
     <div className=''>
-      <div className=' flex container mx-auto h-10 items-center justify-between text-gray-600 font-serif'>
+      <div className=' flex flex-col lg:flex-row px-2 container mx-auto h-12 items-center justify-between text-gray-600 font-serif'>
         <h1 className=' '>Welcome to our shop</h1>
-        <div className=' flex  gap-5'>
+        <div className=' flex justify-between lg:gap-5 lg:justify-normal  text-end w-full lg:w-auto '>
           <div className=' flex items-center gap-2'>
             <ImLocation />
             select location
@@ -58,6 +60,7 @@ const Nav = () => {
                 </svg>
               </div>
               <input
+                onChange={(e) => setSearch(e.target.value)}
                 type='text'
                 id='search-navbar'
                 className='block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 '

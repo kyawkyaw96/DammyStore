@@ -3,10 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import { FetchData } from "../api";
 import { BsCartDashFill } from "react-icons/bs";
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addCartData } from "../Slices/ProductsSlice";
 
 const Detail = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const [detail, setDetail] = useState();
   const mainPrice = detail?.discountPercentage + detail?.price;
   const getProducts = async () => {
@@ -32,9 +34,9 @@ const Detail = () => {
   };
 
   return (
-    <div className='  w-full font-serif h-screen flex items-center justify-center '>
-      <div className='flex items-center gap-2 justify-center border-2 w-full bg-white p-10 rounded-md shadow-md'>
-        <div className='  flex-1 w-1/2 '>
+    <div className='  w-full font-serif  flex items-center justify-center lg:py-3 '>
+      <div className='flex flex-col md:flex-row items-center gap-2 justify-center border-2 w-full py-4 px-2 bg-white lg:p-10 rounded-md shadow-md'>
+        <div className='  flex-1 lg:w-1/2 '>
           <img
             src={detail?.thumbnail}
             className=' hover:scale-105 transition-all w-[700px] object-fill object-center'
@@ -63,7 +65,7 @@ const Detail = () => {
             />
           </div>
         </div>
-        <div className=' flex-1 w-1/2 gap-3 flex flex-col pl-8'>
+        <div className=' flex-1 lg:w-1/2 gap-3 flex flex-col lg:pl-8'>
           <h1 className=' text-2xl font-bold'>{detail?.title}</h1>
           <h2 className=' text-black/50'>{detail?.description}</h2>
           <div className=' flex flex-col'>
@@ -82,10 +84,10 @@ const Detail = () => {
               Stock : <span className=' text-black/50'> {detail?.stock}</span>
             </h3>
           </div>
-          <div className=' flex flex-col lg:flex-row items-center gap-2'>
-            <h1 className='text-lg lg:text-2xl font-bold text-gray-500 '>
+          <div className=' flex items-center justify-start lg:flex-row lg:items-center gap-2'>
+            <span className='text-lg lg:text-2xl font-bold text-gray-500 '>
               Price : $ {detail?.price}
-            </h1>
+            </span>
             <del className=' block text-red-600'>$ {mainPrice} </del>
           </div>
           <div className=' select-none flex items-center justify-between w-28 py-0.5 bg-slate-100 px-2'>
@@ -111,15 +113,14 @@ const Detail = () => {
               {qty * detail?.price} $
             </span>
           </h1>
-          <div className=' flex flex-col gap-2 lg:gap-0 lg:flex-row select-none'>
-            <Link
-              to={`/cart/${detail?.id}`}
-              href='#'
+          <div className=' flex gap-2 lg:gap-0 lg:flex-row select-none'>
+            <button
+              onClick={() => dispatch(addCartData(detail))}
               className='text-white items-center lg:mr-4 mr-0 gap-2 flex bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  lg:font-medium rounded-lg text-md px-2 lg:px-3 py-0.5 lg:py-2.5 text-center '
             >
               Add to cart
               <BsCartDashFill className=' text-xl text-orange-400 ' />
-            </Link>
+            </button>
             <Link
               to={`/cart/${detail?.id}`}
               href='#'
@@ -135,36 +136,3 @@ const Detail = () => {
 };
 
 export default Detail;
-//
-// brand
-// :
-// "Samsung"
-// category
-// :
-// "laptops"
-// description
-// :
-// "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched"
-// discountPercentage
-// :
-// 4.15
-// id
-// :
-// 7
-// images
-// :
-// (4) ['https://i.dummyjson.com/data/products/7/1.jpg', 'https://i.dummyjson.com/data/products/7/2.jpg', 'https://i.dummyjson.com/data/products/7/3.jpg', 'https://i.dummyjson.com/data/products/7/thumbnail.jpg']
-// price
-// :
-// 1499
-// rating
-// :
-// 4.25
-// stock
-// :
-// 50
-// thumbnail
-// :
-// "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
-// title
-// :

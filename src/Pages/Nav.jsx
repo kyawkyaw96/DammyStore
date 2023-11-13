@@ -4,10 +4,14 @@ import { BsCartDashFill } from "react-icons/bs";
 import { ImLocation } from "react-icons/im";
 import { FcBusinessman } from "react-icons/fc";
 import { LuLogIn } from "react-icons/lu";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
   const [search, setSearch] = useState("");
   console.log(search);
+  const cartLength = useSelector((state) => state.products?.cartProducts);
+  const length = cartLength?.length;
+  console.log(length);
   return (
     <div className=''>
       <div className=' flex flex-col lg:flex-row px-2 container mx-auto h-12 items-center justify-between text-gray-600 font-serif'>
@@ -67,10 +71,17 @@ const Nav = () => {
                 placeholder='Search...'
               />
             </div>
-            <div className=' '>
+            <div className=' relative'>
               <Link to={"/cart"}>
                 <BsCartDashFill className=' text-3xl text-orange-400' />
               </Link>
+              <span
+                className={` absolute right-[-8px] top-[-8px] text-sm text-black/40 ${
+                  length == 0 && "hidden"
+                }`}
+              >
+                {length}
+              </span>
             </div>
           </div>
         </div>

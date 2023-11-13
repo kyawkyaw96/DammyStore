@@ -41,6 +41,9 @@ export const ProductsSlice = createSlice({
     addSelectData: (state, action) => {
       return { ...state, selectData: action.payload };
     },
+    removeAllItemCart: (state, action) => {
+      return { ...state, cartProducts: [] };
+    },
   },
 });
 export const {
@@ -49,5 +52,6 @@ export const {
   addSliderData,
   removeFromCart,
   addSelectData,
+  removeAllItemCart,
 } = ProductsSlice.actions;
 export default ProductsSlice.reducer;

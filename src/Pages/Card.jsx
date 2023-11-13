@@ -1,7 +1,12 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { addCartData } from "../Slices/ProductsSlice";
 
 const Card = ({ product }) => {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.products.cartProducts);
+  console.log(data);
   return (
     <>
       <div className=' flex justify-center items-center px-4 bg-secondary border-l-8 border-l-red-500 h-16 w-full'>
@@ -97,13 +102,12 @@ const Card = ({ product }) => {
                 </div>
 
                 <div className='flex lg:flex-row mt-2 gap-2   lg:gap-6 justify-between items-center lg:justify-between '>
-                  <Link
-                    to={`/cart/${product?.id}`}
-                    href='#'
+                  <button
+                    onClick={() => dispatch(addCartData(product))}
                     className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  lg:font-medium rounded-lg text-xs px-2 lg:px-3 py-0.5 lg:py-2.5 text-center '
                   >
                     AddToCart
-                  </Link>
+                  </button>
                   <Link
                     to={`detail/${product?.id}`}
                     href='#'

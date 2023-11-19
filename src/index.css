@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+  --toastify-toast-width: 120px;
+  --toastify-toast-background: #fff;
+  --toastify-toast-min-height: 44px;
+  --toastify-toast-max-height: 400px;
+  --toastify-font-family: sans-serif;
+  --toastify-z-index: 9999;
+}
+@layer utilities {
+  .clip-polygon {
+    clip-path: polygon(0% 0%, 60% 0%, 100% 50%, 60% 100%, 0% 100%);
+  }
+  .clip-polygon-hover{
+    clip-path: polygon(0% 0%, 80% 0%, 100% 50%, 80% 100%, 0% 100%);
+
+  }
+}

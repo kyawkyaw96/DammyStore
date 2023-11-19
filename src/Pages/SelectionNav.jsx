@@ -5,7 +5,9 @@ import { useDispatch } from "react-redux";
 
 const SelectionNav = () => {
   return (
-    <div className=' flex items-center justify-evenly h-16 bg-secondary border-l-8 border-l-red-500 py-2 w-full'>
+    <div className=' flex items-center justify-evenly h-16 relative bg-secondary py-2 w-full'>
+      <div className=' absolute clip-polygon hover:clip-polygon-hover w-7 hover:w-[20%] transition-all h-full left-0 bg-yellow-300'></div>
+
       <div className=' flex items-center  gap-6'>
         <Drawer />
 

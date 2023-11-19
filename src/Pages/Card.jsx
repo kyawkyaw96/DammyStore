@@ -2,19 +2,43 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addCartData } from "../Slices/ProductsSlice";
+import { toast } from "react-toastify";
+import { PiArrowFatLinesUpDuotone } from "react-icons/pi";
 
-const Card = ({ product }) => {
+const Card = ({ products }) => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.products.cartProducts);
-  console.log(data);
+  // console.log(data);
+  const toastBtn = (product) => {
+    dispatch(addCartData(product));
+    toast.success(" Product add!", {
+      position: "top-right",
+      autoClose: 500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+  const scrollTop = () => {
+    window.scrollTo({ top: 800, behavior: "smooth" });
+  };
   return (
     <>
-      <div className=' flex justify-center items-center px-4 bg-secondary border-l-8 border-l-red-500 h-16 w-full'>
+      <div className=' flex justify-center items-center px-4 bg-secondary relative h-16 w-full'>
+        <div className=' absolute clip-polygon hover:clip-polygon-hover w-7 hover:w-[20%] transition-all h-full left-0 bg-yellow-300'></div>
         <h1 className='  text-white font-bold text-2xl'>Happy Shopping</h1>
       </div>
-      <div className='flex flex-wrap overflow-hidden gap-1 lg:gap-5 my-4 w-full items-center justify-center'>
-        {" "}
-        {product?.map((product) => (
+      <div className='flex flex-wrap overflow-hidden relative gap-1 lg:gap-5 my-4 w-full items-center justify-center'>
+        <button
+          className='  right-5 bottom-4 z-40 text-white transition-all hover:animate-bounce shadow-lg hover:drop-shadow-md fixed  w-10 h-10 flex justify-center items-center rounded-full mx-auto bg-slate-400'
+          onClick={scrollTop}
+        >
+          <PiArrowFatLinesUpDuotone className=' text-3xl ' />
+        </button>
+        {products?.map((product) => (
           <div
             key={product?.id}
             className=' w-44 lg:w-[275px] h-[320px] lg:h-[420px] relative shadow-md bg-white border border-gray-200 rounded-lg  '
@@ -103,7 +127,7 @@ const Card = ({ product }) => {
 
                 <div className='flex lg:flex-row mt-2 gap-2   lg:gap-6 justify-between items-center lg:justify-between '>
                   <button
-                    onClick={() => dispatch(addCartData(product))}
+                    onClick={() => toastBtn(product)}
                     className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  lg:font-medium rounded-lg text-xs px-2 lg:px-3 py-0.5 lg:py-2.5 text-center '
                   >
                     AddToCart

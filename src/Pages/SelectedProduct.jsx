@@ -3,13 +3,27 @@ import { FetchSliderData } from "../api";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addCartData } from "../Slices/ProductsSlice";
+import { toast } from "react-toastify";
 
 const SelectedProduct = () => {
   const { products } = useSelector((state) => state.products.selectData);
   const dispatch = useDispatch();
+  const toastBtn = (product) => {
+    dispatch(addCartData(product));
+    toast.success(" Product add!", {
+      position: "top-right",
+      autoClose: 500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
 
   return (
-    <div className=' flex flex-nowrap overflow-auto scroll-smooth gap-2 my-3'>
+    <div className=' flex flex-nowrap overflow-auto scroll-smooth gap-2 my-3 px-3'>
       {" "}
       {products?.map((product) => (
         <div
@@ -100,7 +114,7 @@ const SelectedProduct = () => {
 
               <div className='flex lg:flex-row mt-2 gap-2  lg:gap-6 justify-between items-center lg:justify-between '>
                 <button
-                  onClick={() => dispatch(addCartData(product))}
+                  onClick={() => toastBtn(product)}
                   href='#'
                   className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  lg:font-medium rounded-lg text-xs px-2 lg:px-3 py-0.5 lg:py-2.5 text-center '
                 >

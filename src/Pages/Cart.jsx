@@ -5,6 +5,7 @@ import CartTable from "./CartTable";
 import { removeAllItemCart } from "../Slices/ProductsSlice";
 import Logo from "./Logo";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const data = useSelector((state) => state.products.cartProducts);
@@ -72,6 +73,7 @@ const Cart = () => {
                 </th>
               </tr>
             </thead>
+            
             {data?.map((product, index) => (
               <CartTable
                 key={product?.id}
@@ -83,6 +85,7 @@ const Cart = () => {
             ))}
           </table>
         </div>
+        
         {/* delete and clear cart */}
         <div
           className={` ${
@@ -100,9 +103,15 @@ const Cart = () => {
               Total ({itemLength} items) :{" "}
               <span className=' text-red-700 font-bold'>$ {total}</span>
             </h1>
-            <button className=' mt-2 w-full text-red-500 border border-red-500 px-2 py-1 hover:text-white hover:bg-red-500 hover:border-white'>
-              Check Out
-            </button>
+
+            <Link
+              onClick={() => dispatch(removeAllItemCart())}
+              to={"/checkout"}
+            >
+              <button className=' mt-2 w-full text-red-500 border border-red-500 px-2 py-1 hover:text-white hover:bg-red-500 hover:border-white'>
+                Check Out
+              </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [search, setSearch] = useState("");
-  console.log(search);
+  // console.log(search);
   const cartLength = useSelector((state) => state.products?.cartProducts);
   const length = cartLength?.length;
   // console.log(length);

@@ -12,6 +12,7 @@ import Cart from "./Pages/Cart";
 import Detail from "./Pages/Detail";
 import { ToastContainer, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CheckOut from "./Pages/CheckOut";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -55,6 +56,8 @@ const App = () => {
         <Route path='/about' element={<About />} />
         <Route path='/detail/:id' element={<Detail />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/checkout' element={<CheckOut />} />
+        
       </Routes>
       <Footer />
     </div>

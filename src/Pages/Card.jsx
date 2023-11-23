@@ -43,13 +43,13 @@ const Card = ({ products }) => {
             key={product?.id}
             className=' w-44 lg:w-[275px] h-[320px] lg:h-[420px] relative shadow-md bg-white border border-gray-200 rounded-lg  '
           >
-            <a href='#'>
+            <Link to={`detail/${product?.id}`}>
               <img
                 className='p-4 lg:p-8 h-[100px] lg:h-[200px] rounded-t-lg object-cover '
                 src={product?.images[0]}
                 alt='product image'
               />
-            </a>
+            </Link>
             <div className='px-5 pb-5'>
               <a href='#'>
                 <h5 className=' text-base lg:text-xl font-semibold tracking-tight text-gray-900'>

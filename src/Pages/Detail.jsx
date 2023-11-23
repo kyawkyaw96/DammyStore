@@ -17,11 +17,16 @@ const Detail = () => {
     setDetail(data);
   };
 
+  // img change
+  const defImg = detail?.thumbnail;
+  const [img, setImg] = useState();
   // test
 
   useEffect(() => {
     getProducts();
-  }, []);
+    setImg(defImg);
+  }, [defImg]);
+
   const [qty, setQty] = useState(1);
   const increaseQty = () => {
     if (qty < detail?.stock) {
@@ -37,38 +42,27 @@ const Detail = () => {
   return (
     <>
       <Logo />
-      <div className='  w-full font-serif  flex items-center justify-center py-3 px-2 lg:px-0 '>
-        <div className='flex flex-col md:flex-row items-center gap-2 justify-center border-2 w-full py-4 px-2 bg-white lg:p-10 rounded-md shadow-md'>
-          <div className='  flex-1 lg:w-1/2 '>
+      <div className='  w-full lg:mx-3 font-serif  flex items-center justify-center py-3 px-2 lg:px-0 '>
+        <div className='flex  flex-col md:flex-row items-center gap-2 justify-center border-2 w-full py-4 px-2 bg-white lg:p-10 rounded-md shadow-md'>
+          <div className='flex-1 flex flex-col justify-center items-center'>
             <img
-              src={detail?.thumbnail}
-              className=' hover:scale-105 transition-all w-[700px] object-cover object-center'
+              src={img}
+              className=' hover:scale-105 transition-all w-[85%] h-[300px] object-fill object-center'
               alt=''
             />
-            <div className=' flex flex-wrap gap-1 mt-2'>
-              <img
-                src={detail?.images[0]}
-                className=' w-24 hover:scale-105 transition-all object-cover'
-                alt=''
-              />
-              <img
-                src={detail?.images[1]}
-                className=' w-24 hover:scale-105 transition-all object-cover'
-                alt=''
-              />
-              <img
-                src={detail?.images[2]}
-                className=' w-24 hover:scale-105 transition-all object-cover'
-                alt=''
-              />
-              <img
-                src={detail?.images[3]}
-                className=' w-24 hover:scale-105 transition-all object-cover'
-                alt=''
-              />
+            <div className=' flex flex-wrap justify-center gap-1 mt-2'>
+              {detail?.images?.map((image) => (
+                <img
+                  key={image}
+                  onClick={() => setImg(image)}
+                  src={image}
+                  className=' w-16 hover:scale-105 transition-all object-cover'
+                  alt=''
+                />
+              ))}
             </div>
           </div>
-          <div className=' flex-1 lg:w-1/2 gap-3 flex flex-col lg:pl-8'>
+          <div className='gap-3 flex-1 lg:bg-slate-100 p-4 ml-3 lg:shadow-xl lg:rounded-sm flex flex-col lg:pl-8'>
             <h1 className=' text-2xl font-bold'>{detail?.title}</h1>
             <h2 className=' text-black/50'>{detail?.description}</h2>
             <div className=' flex flex-col'>
@@ -125,7 +119,7 @@ const Detail = () => {
                 <BsCartDashFill className=' text-xl text-orange-400 ' />
               </button>
               <Link
-                to={`/cart/${detail?.id}`}
+                to='/checkout'
                 href='#'
                 className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  lg:font-medium rounded-lg text-md px-2 lg:px-3 py-0.5 lg:py-2.5 text-center '
               >

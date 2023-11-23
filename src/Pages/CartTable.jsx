@@ -44,7 +44,7 @@ const CartTable = ({ product, index, increaseTotal, decreaseTotal }) => {
             />
             <span
               className={` w-8 text-center px-2 ${
-                qty == product?.stock ? "text-red-600" : "text-black"
+                qty == product?.stock ? "text-red-500" : "text-black"
               }`}
             >
               {qty}
@@ -55,10 +55,12 @@ const CartTable = ({ product, index, increaseTotal, decreaseTotal }) => {
             />
           </div>
         </td>
-        <td className='pl-2 pr-6 py-4 text-end'>{product?.price * qty} $</td>
+        <td className='pl-2 pr-6 py-4 text-end text-red-500'>
+          {product?.price * qty} $
+        </td>
         <td
           onClick={handleRemove}
-          className='px-6 py-4 text-red-500 cursor-pointer'
+          className='px-6 py-4 hover:underline text-red-500 cursor-pointer'
         >
           Delete
         </td>

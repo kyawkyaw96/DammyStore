@@ -101,7 +101,7 @@ const Cart = () => {
           <div className=' w-46 '>
             <h1>
               Total ({itemLength} items) :{" "}
-              <span className=' text-red-700 font-bold'>$ {total}</span>
+              <span className=' text-red-700 font-bold'>$ {total?.toFixed(3)}</span>
             </h1>
 
             <Link

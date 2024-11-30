@@ -56,7 +56,7 @@ const CartTable = ({ product, index, increaseTotal, decreaseTotal }) => {
           </div>
         </td>
         <td className='pl-2 pr-6 py-4 text-end text-red-500'>
-          {product?.price * qty} $
+          {(product?.price * qty)?.toFixed(3)} $
         </td>
         <td
           onClick={handleRemove}

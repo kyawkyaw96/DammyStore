@@ -34,7 +34,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className=' w-full   mx-auto bg-primary overflow-hidden m-0'>
+    <div className=' w-full select-none mx-auto bg-primary overflow-hidden m-0'>
       <div className=' flex items-end'>
         <ToastContainer
           position='top-right'

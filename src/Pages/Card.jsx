@@ -45,14 +45,14 @@ const Card = ({ products }) => {
           >
             <Link to={`detail/${product?.id}`}>
               <img
-                className='p-4 lg:p-8 h-[100px] lg:h-[200px] rounded-t-lg object-cover '
+                className='p-2 lg:p-4 h-[130px] lg:h-[200px] rounded-t-lg object-cover '
                 src={product?.images[0]}
                 alt='product image'
               />
             </Link>
             <div className='px-5 pb-5'>
               <a href='#'>
-                <h5 className=' text-base lg:text-xl font-semibold tracking-tight text-gray-900'>
+                <h5 className=' text-xs lg:text-xl font-semibold tracking-tight text-gray-900'>
                   {product?.title.length >= 15 ? (
                     <span>{product?.title?.substring(0, 15)}...</span>
                   ) : (

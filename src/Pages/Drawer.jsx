@@ -105,14 +105,14 @@ const Drawer = () => {
           <ul className='space-y-2 font-medium'>
             {/* category selected from sidebar */}
             {category?.map((category) => (
-              <li key={category}>
+              <li key={category?.name}>
                 <button
-                  onClick={() => select(category)}
+                  onClick={() => select(category?.name)}
                   className='flex items-center p-2 text-gray-900 rounded-lg 
                    hover:bg-gray-100 
                     group'
                 >
-                  <span className='ml-3 font-mono'>{category}</span>
+                  <span className='ml-3 font-mono'>{category?.name}</span>
                 </button>
               </li>
             ))}

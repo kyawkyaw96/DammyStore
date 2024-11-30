@@ -14,9 +14,9 @@ const CustomSlider = () => {
     autoplaySpeed: 3000,
     autoplay: true,
     arrows: false,
-    pauseOnHover: false,
+    pauseOnHover: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
   };
   return (
@@ -25,12 +25,12 @@ const CustomSlider = () => {
         {products?.map((product) => (
           <div className=' ' key={product?.id}>
             <img
-              className=' w-3/4 mx-auto h-[250px] object-fill'
+              className=' w-3/4 mx-auto h-[340px] object-fill'
               src={product?.thumbnail}
               alt=''
             />
-            <h1 className='w-3/4 mx-auto text-gray-500 font-bold'>
-              {product?.title}
+            <h1 className='w-2/4 mx-auto text-xs flex justify-center lg:text-xl text-gray-500 font-bold'>
+              {(product?.title)?.substring(0,14)}
             </h1>
           </div>
         ))}

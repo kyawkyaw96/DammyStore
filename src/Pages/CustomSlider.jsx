@@ -25,7 +25,7 @@ const CustomSlider = () => {
         {products?.map((product) => (
           <div className=' ' key={product?.id}>
             <img
-              className=' w-3/4 mx-auto h-[340px] object-fill'
+              className=' w-full mx-auto h-[120px] lg:h-[350px] object-fill'
               src={product?.thumbnail}
               alt=''
             />

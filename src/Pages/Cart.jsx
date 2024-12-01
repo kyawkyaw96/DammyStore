@@ -90,11 +90,11 @@ const Cart = () => {
         <div
           className={` ${
             itemLength >= 1 ? "block" : "hidden"
-          } flex justify-between py-4 items-center px-4 bg-white font-serif`}
+          } flex  justify-between items-end p-4 bg-white font-serif`}
         >
           <button
             onClick={deleteCart}
-            className=' h-9 flex items-center gap-2 text-red-500 border border-red-500 px-2 py-1 hover:text-white hover:bg-red-500 hover:border-white'
+            className=' h-9 flex items-center mb-0 gap-2 text-red-500 border border-red-500 px-2 py-1 hover:text-white hover:bg-red-500 hover:border-white'
           >
             <BsFillTrash3Fill /> Clear Cart
           </button>
@@ -108,7 +108,7 @@ const Cart = () => {
               onClick={() => dispatch(removeAllItemCart())}
               to={"/checkout"}
             >
-              <button className=' mt-2 w-full text-red-500 border border-red-500 px-2 py-1 hover:text-white hover:bg-red-500 hover:border-white'>
+              <button className=' mt-2 w-full text-green-500 border border-green-500 px-2 py-1 hover:text-white hover:bg-green-500 hover:border-white'>
                 Check Out
               </button>
             </Link>
